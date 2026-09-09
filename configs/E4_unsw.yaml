@@ -1,0 +1,39 @@
+# E4: Dual-Agent NoHarness — Fine-tuned LLM + RF, no Consensus Module
+# Dataset: UNSW-NB15
+
+experiment:
+  id: E4
+  name: Ours-NoHarness
+  description: "Dual-Agent (fine-tuned Alpha + RF Beta), Alpha result only (no verification loop)"
+  dataset: unsw_nb15
+
+data:
+  base_dir: project/data/processed/unsw_nb15/zeroday_split
+  train: train_known.csv
+  val_known: val_known.csv
+  val_zeroday: val_zeroday.csv
+  text_col: text
+  label_col: label_name
+  zeroday_classes: ["Shellcode", "Worms"]
+
+agent_alpha_hf:
+  base_model: unsloth/Llama-3.2-3B-Instruct
+  adapter_path: project/models/qlora_unsw/adapter
+  load_in_4bit: false  # fp16 is faster on MPS (~2s vs 27s per sample)
+  temperature: 0.1
+  max_new_tokens: 150
+
+agent_beta_ml:
+  model_path: project/logs/E2_beta_ml_model.pkl
+
+mode: no_harness
+
+sampling:
+  pilot_n: 100
+  subsample_n: 5000
+  seed: 42
+
+output:
+  results_dir: project/results/tables
+  logs_dir: project/logs
+  prefix: E4_unsw

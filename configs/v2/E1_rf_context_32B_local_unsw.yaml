@@ -1,0 +1,36 @@
+# E1-RF-32B: Qwen2.5-32B (Ollama local) + No Harness + RF Context
+# Same family as 7B/14B (Qwen), tests within-family scaling on Mac
+experiment:
+  id: "E1_rf_context_32B_local_unsw"
+  name: "Zero-shot 32B Qwen, No Harness, RF Context"
+
+model:
+  base: "api://localhost:11434/qwen2.5:32b"
+  adapter: null
+  load_in_4bit: false
+  max_new_tokens: 256
+  temperature: 0.1
+
+harness:
+  enabled: false
+  rf_context: true
+  tools:
+    check_anomaly: true
+    lookup_signature: true
+    query_history: true
+    load_knowledge: true
+  permissions:
+    enabled: true
+    confidence_threshold: 0.3
+  max_steps: 5
+
+data:
+  dataset: "unsw"
+  split: "val"
+  subsample: null
+  seed: 42
+  ml_model_path: "project/logs/E2_beta_ml_model.pkl"
+
+output:
+  log_dir: "project/logs/v2/"
+  results_dir: "project/results/tables/v2/"

@@ -1,0 +1,36 @@
+# E1-RF-7B: Zero-shot 7B + No Harness + RF Context in Prompt
+# Comparison with E3-8B (87.5% with harness) to test if 7B also relays RF
+experiment:
+  id: "E1_rf_context_7B_unsw"
+  name: "Zero-shot 7B, No Harness, RF Context"
+
+model:
+  base: "Qwen/Qwen2.5-7B-Instruct"
+  adapter: null
+  load_in_4bit: false
+  max_new_tokens: 256
+  temperature: 0.1
+
+harness:
+  enabled: false
+  rf_context: true
+  tools:
+    check_anomaly: true
+    lookup_signature: true
+    query_history: true
+    load_knowledge: true
+  permissions:
+    enabled: true
+    confidence_threshold: 0.3
+  max_steps: 5
+
+data:
+  dataset: "unsw"
+  split: "val"
+  subsample: null
+  seed: 42
+  ml_model_path: "project/logs/E2_beta_ml_model.pkl"
+
+output:
+  log_dir: "project/logs/v2/"
+  results_dir: "project/results/tables/v2/"

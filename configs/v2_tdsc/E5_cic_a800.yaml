@@ -1,0 +1,45 @@
+# E5-cic-tdsc: Dual-Agent Pipeline on CIC-IDS2017 (A800 HF+unsloth backend)
+# Exp-D-cic: T4 Disagreement-Uncertainty hypothesis test
+# Dataset: CIC-IDS2017 Full (cross-dataset independence test)
+
+experiment:
+  id: E5_cic_tdsc
+  name: Ours-SecHarness-HF-CIC
+  description: "Dual-Agent (AlphaHF + BetaML) on CIC-IDS2017; tests T4 disagreement-uncertainty hypothesis"
+  dataset: cic_ids2017_full
+
+data:
+  base_dir: project/data/processed/cic_ids2017_full/zeroday_split
+  train: train_known.csv
+  val_known: val_known.csv
+  val_zeroday: val_zeroday.csv
+  text_col: text
+  label_col: label_name
+  zeroday_classes: ["Bot", "WebAttack", "Infiltration"]
+
+agent_alpha_hf:
+  base_model: unsloth/Llama-3.2-3B-Instruct
+  adapter_path: project/models/qlora_cic_full/adapter
+  load_in_4bit: false
+  temperature: 0.1
+  max_new_tokens: 200
+  device: cuda
+
+agent_beta_ml:
+  model_path: project/logs/E2_beta_ml_cic_full_model.pkl
+
+consensus:
+  alpha_weight: 0.6
+  beta_weight: 0.4
+  disagreement_strategy: alpha_priority
+  confidence_threshold: 0.4
+
+sampling:
+  pilot_n: 20
+  subsample_n: 1000
+  seeds: [42, 123, 456]
+
+output:
+  results_dir: project/results/tables/v2_tdsc/
+  logs_dir: project/logs/v2_tdsc/
+  prefix: E5_cic_tdsc

@@ -1,0 +1,39 @@
+# E1-RF: Zero-shot + No Harness + RF Context in Prompt
+# Purpose: Isolate harness structure contribution vs raw RF information access
+# Comparison: E1 (no RF) → E1-RF (RF in prompt) → E3 (RF via tool loop)
+# If E1-RF ≈ E3: harness structure adds no value, it's just information access
+# If E1-RF < E3: harness structure (tool loop) provides value beyond raw access
+experiment:
+  id: "E1_rf_context_unsw"
+  name: "Zero-shot, No Harness, RF Context"
+
+model:
+  base: "unsloth/Llama-3.2-3B-Instruct"
+  adapter: null
+  load_in_4bit: false
+  max_new_tokens: 256
+  temperature: 0.1
+
+harness:
+  enabled: false
+  rf_context: true  # Inject RF prediction into user prompt
+  tools:
+    check_anomaly: true
+    lookup_signature: true
+    query_history: true
+    load_knowledge: true
+  permissions:
+    enabled: true
+    confidence_threshold: 0.3
+  max_steps: 5
+
+data:
+  dataset: "unsw"
+  split: "val"
+  subsample: 1000
+  seed: 42
+  ml_model_path: "project/logs/E2_beta_ml_model.pkl"
+
+output:
+  log_dir: "project/logs/v2/"
+  results_dir: "project/results/tables/v2/"

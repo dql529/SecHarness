@@ -1,0 +1,36 @@
+# E3-32B: Qwen2.5-32B (Ollama) + SecHarness
+# Harness value at 32B scale — same family as 7B/14B for controlled comparison
+experiment:
+  id: "E3_32B_local_unsw"
+  name: "Zero-shot 32B Qwen, SecHarness"
+
+model:
+  base: "api://localhost:11434/qwen2.5:32b"
+  adapter: null
+  load_in_4bit: false
+  max_new_tokens: 256
+  temperature: 0.1
+
+harness:
+  enabled: true
+  rf_context: false
+  tools:
+    check_anomaly: true
+    lookup_signature: true
+    query_history: true
+    load_knowledge: true
+  permissions:
+    enabled: true
+    confidence_threshold: 0.3
+  max_steps: 5
+
+data:
+  dataset: "unsw"
+  split: "val"
+  subsample: null
+  seed: 42
+  ml_model_path: "project/logs/E2_beta_ml_model.pkl"
+
+output:
+  log_dir: "project/logs/v2/"
+  results_dir: "project/results/tables/v2/"

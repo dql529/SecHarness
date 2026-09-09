@@ -1,0 +1,32 @@
+file,cond,dataset,model,n,agree,deference,ci_lo,ci_hi,no_tool_calls,unparsable
+E3_cic_full_sub1000_audit.jsonl,E3 (tool channel),CIC,unsloth/Llama-3.2-3B-Instruct,1000,999,0.999,0.9944,0.9998,0,0
+E4_cic_full_sub1000_audit.jsonl,"E4 (tool channel, FT)",CIC,unsloth/Llama-3.2-3B-Instruct,1000,995,0.995,0.9883,0.9979,0,0
+E3_7B_ablation_noKnowledge_unsw_sub200_audit.jsonl,E3 (tool channel),UNSW,Qwen/Qwen2.5-7B-Instruct,200,179,0.895,0.8448,0.9303,0,0
+E3_7B_ablation_noObservation_unsw_sub200_audit.jsonl,E3 (tool channel),UNSW,Qwen/Qwen2.5-7B-Instruct,200,182,0.91,0.8622,0.9423,0,0
+E3_7B_ablation_noPermissions_unsw_sub200_audit.jsonl,E3 (tool channel),UNSW,Qwen/Qwen2.5-7B-Instruct,200,181,0.905,0.8564,0.9383,0,0
+E3_8B_unsw_pilot10_audit.jsonl,E3 (tool channel),UNSW,Qwen/Qwen2.5-7B-Instruct,12,10,0.8333,0.552,0.953,0,0
+E3_8B_unsw_sub200_audit.jsonl,E3 (tool channel),UNSW,Qwen/Qwen2.5-7B-Instruct,200,182,0.91,0.8622,0.9423,0,0
+E3_70B_unsw_sub200_audit.jsonl,E3 (tool channel),UNSW,casperhansen/llama-3.3-70b-instruct-awq,200,182,0.91,0.8622,0.9423,0,0
+E3_14B_unsw_sub200_audit.jsonl,E3 (tool channel),UNSW,qwen2.5:14b,200,185,0.925,0.88,0.954,0,0
+E3_32B_local_unsw_sub200_audit.jsonl,E3 (tool channel),UNSW,qwen2.5:32b,200,182,0.91,0.8622,0.9423,0,0
+E3_unsw_sub1000_audit.jsonl,E3 (tool channel),UNSW,unsloth/Llama-3.2-3B-Instruct,1000,1000,1.0,0.9962,1.0,0,0
+E3_unsw_sub200_audit.jsonl,E3 (tool channel),UNSW,unsloth/Llama-3.2-3B-Instruct,200,200,1.0,0.9812,1.0,0,0
+E4_ablation_full_unsw_pilot20_audit.jsonl,"E4 (tool channel, FT)",UNSW,unsloth/Llama-3.2-3B-Instruct,24,24,1.0,0.862,1.0,0,0
+E4_ablation_full_unsw_sub200_audit.jsonl,"E4 (tool channel, FT)",UNSW,unsloth/Llama-3.2-3B-Instruct,200,200,1.0,0.9812,1.0,0,0
+E4_ablation_noKnowledge_unsw_sub200_audit.jsonl,"E4 (tool channel, FT)",UNSW,unsloth/Llama-3.2-3B-Instruct,200,200,1.0,0.9812,1.0,0,0
+E4_ablation_noObservation_unsw_sub200_audit.jsonl,"E4 (tool channel, FT)",UNSW,unsloth/Llama-3.2-3B-Instruct,200,200,1.0,0.9812,1.0,0,0
+E4_ablation_noPermissions_unsw_sub200_audit.jsonl,"E4 (tool channel, FT)",UNSW,unsloth/Llama-3.2-3B-Instruct,200,200,1.0,0.9812,1.0,0,0
+E4_noKnowledge_unsw_sub200_audit.jsonl,"E4 (tool channel, FT)",UNSW,unsloth/Llama-3.2-3B-Instruct,9,8,0.8889,0.565,0.9801,191,0
+E4_noObservation_unsw_sub200_audit.jsonl,"E4 (tool channel, FT)",UNSW,unsloth/Llama-3.2-3B-Instruct,23,22,0.9565,0.7901,0.9923,177,0
+E4_noPermissions_unsw_sub200_audit.jsonl,"E4 (tool channel, FT)",UNSW,unsloth/Llama-3.2-3B-Instruct,23,22,0.9565,0.7901,0.9923,177,0
+E4_unsw_sub1000_audit.jsonl,"E4 (tool channel, FT)",UNSW,unsloth/Llama-3.2-3B-Instruct,1000,1000,1.0,0.9962,1.0,0,0
+E4_unsw_sub10_audit.jsonl,"E4 (tool channel, FT)",UNSW,unsloth/Llama-3.2-3B-Instruct,10,10,1.0,0.7225,1.0,0,0
+E4_unsw_sub200_audit.jsonl,"E4 (tool channel, FT)",UNSW,unsloth/Llama-3.2-3B-Instruct,226,226,1.0,0.9833,1.0,174,0
+tau_13B_full_unsw_sub200_audit.jsonl,tau RQ7,UNSW,Qwen/Qwen2.5-14B-Instruct-AWQ,200,184,0.92,0.874,0.9502,0,0
+tau_13B_noKnowledge_unsw_sub200_audit.jsonl,tau RQ7,UNSW,Qwen/Qwen2.5-14B-Instruct-AWQ,200,182,0.91,0.8622,0.9423,0,0
+tau_13B_noObservation_unsw_sub200_audit.jsonl,tau RQ7,UNSW,Qwen/Qwen2.5-14B-Instruct-AWQ,200,186,0.93,0.8859,0.9578,0,0
+tau_13B_noPermissions_unsw_sub200_audit.jsonl,tau RQ7,UNSW,Qwen/Qwen2.5-14B-Instruct-AWQ,393,360,0.916,0.8844,0.9396,0,0
+tau_32B_full_unsw_sub200_audit.jsonl,tau RQ7,UNSW,Qwen/Qwen2.5-32B-Instruct-AWQ,200,182,0.91,0.8622,0.9423,0,0
+tau_32B_noKnowledge_unsw_sub200_audit.jsonl,tau RQ7,UNSW,Qwen/Qwen2.5-32B-Instruct-AWQ,200,182,0.91,0.8622,0.9423,0,0
+tau_32B_noObservation_unsw_sub200_audit.jsonl,tau RQ7,UNSW,Qwen/Qwen2.5-32B-Instruct-AWQ,200,185,0.925,0.88,0.954,0,0
+tau_32B_noPermissions_unsw_sub200_audit.jsonl,tau RQ7,UNSW,Qwen/Qwen2.5-32B-Instruct-AWQ,200,182,0.91,0.8622,0.9423,0,0

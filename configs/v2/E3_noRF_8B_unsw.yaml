@@ -1,0 +1,36 @@
+# E3-noRF-8B: Llama-3.1-8B + Harness Loop (NO RF tool)
+# Cross-family control: Llama at 8B without RF
+experiment:
+  id: "E3_noRF_8B_unsw"
+  name: "Zero-shot 8B Llama + Harness, No RF Tool"
+
+model:
+  base: "api://localhost:11434/llama3.1:8b"
+  adapter: null
+  load_in_4bit: false
+  max_new_tokens: 512
+  temperature: 0.1
+
+harness:
+  enabled: true
+  rf_context: false
+  tools:
+    check_anomaly: false
+    lookup_signature: true
+    query_history: true
+    load_knowledge: true
+  permissions:
+    enabled: true
+    confidence_threshold: 0.3
+  max_steps: 5
+
+data:
+  dataset: "unsw"
+  split: "val"
+  subsample: null
+  seed: 42
+  ml_model_path: "project/logs/E2_beta_ml_model.pkl"
+
+output:
+  log_dir: "project/logs/v2/"
+  results_dir: "project/results/tables/v2/"

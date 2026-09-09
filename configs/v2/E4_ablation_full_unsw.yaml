@@ -1,0 +1,32 @@
+experiment:
+  id: "E4_ablation_full_unsw"
+  name: "E4 ablation: full"
+
+model:
+  base: "unsloth/Llama-3.2-3B-Instruct"
+  adapter: "project/models/qlora_unsw_v2_clean/adapter/"
+  load_in_4bit: false
+  max_new_tokens: 256
+  temperature: 0.1
+
+harness:
+  enabled: true
+  tools:
+    check_anomaly: true
+    lookup_signature: true
+    query_history: true
+    load_knowledge: true
+  permissions:
+    enabled: true
+    confidence_threshold: 0.3
+  max_steps: 5
+
+data:
+  dataset: "unsw"
+  split: "val"
+  subsample: null
+  ml_model_path: "project/logs/E2_beta_ml_model.pkl"
+
+output:
+  log_dir: "project/logs/v2/"
+  results_dir: "project/results/tables/v2/"

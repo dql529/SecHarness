@@ -1,0 +1,50 @@
+# E2: Baseline-Hybrid — LLM + ML Classifier
+# Dataset: UNSW-NB15
+
+experiment:
+  id: E2
+  name: Baseline-Hybrid
+  description: "Agent-Alpha (LLM) + ML Classifier (RandomForest), simple weighted fusion"
+  dataset: unsw_nb15
+
+data:
+  base_dir: project/data/processed/unsw_nb15/zeroday_split
+  train: train_known.csv
+  val_known: val_known.csv
+  val_zeroday: val_zeroday.csv
+  text_col: text
+  label_col: label_name
+  zeroday_classes: ["Shellcode", "Worms"]
+
+agent_alpha:
+  model: llama3.2:latest
+  ollama_url: http://localhost:11434
+  temperature: 0.1
+  max_tokens: 512
+  timeout: 120.0
+  max_workers: 2
+
+agent_beta_ml:
+  classifier_type: random_forest
+  n_estimators: 200
+  max_depth: 12
+  random_state: 42
+  model_save_path: project/logs/E2_beta_ml_model.pkl
+
+# Simple weighted fusion (NOT the full Consensus Module)
+fusion:
+  mode: weighted_average  # avg confidence, verdict by threshold
+  alpha_weight: 0.5
+  beta_weight: 0.5
+  attack_threshold: 0.5  # if fused_conf > threshold AND either says attack → attack
+
+sampling:
+  pilot_n: 100
+  subsample_n: 5000
+  full: true
+  seed: 42
+
+output:
+  results_dir: project/results/tables
+  logs_dir: project/logs
+  prefix: E2_unsw

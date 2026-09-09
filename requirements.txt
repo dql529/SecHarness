@@ -1,0 +1,24 @@
+# SecHarness project dependencies
+# Python 3.11+
+
+# Core ML
+torch>=2.11.0
+transformers>=5.4.0
+peft>=0.18.1
+accelerate>=1.13.0
+safetensors>=0.7.0
+bitsandbytes>=0.49.2
+
+# Data & Analysis
+numpy>=2.3.5
+pandas>=2.3.3
+scikit-learn>=1.7.2
+scipy>=1.16.3
+
+# Visualization
+matplotlib>=3.10.6
+seaborn>=0.13.2
+
+# Utilities
+pyyaml>=6.0
+tqdm>=4.66.0

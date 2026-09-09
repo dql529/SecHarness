@@ -1,0 +1,35 @@
+# E3-70B: Zero-shot 70B + SecHarness (A800 vLLM)
+# Key experiment: does 70B override RF? Does harness loop add value at scale?
+experiment:
+  id: "E3_70B_unsw"
+  name: "Zero-shot 70B, SecHarness"
+
+model:
+  base: "api://localhost:8000/casperhansen/llama-3.3-70b-instruct-awq"
+  adapter: null
+  load_in_4bit: false
+  max_new_tokens: 256
+  temperature: 0.1
+
+harness:
+  enabled: true
+  tools:
+    check_anomaly: true
+    lookup_signature: true
+    query_history: true
+    load_knowledge: true
+  permissions:
+    enabled: true
+    confidence_threshold: 0.3
+  max_steps: 5
+
+data:
+  dataset: "unsw"
+  split: "val"
+  subsample: null
+  seed: 42
+  ml_model_path: "project/logs/E2_beta_ml_model.pkl"
+
+output:
+  log_dir: "project/logs/v2/"
+  results_dir: "project/results/tables/v2/"

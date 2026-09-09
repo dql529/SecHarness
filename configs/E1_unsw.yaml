@@ -1,0 +1,40 @@
+# E1: Baseline-Single — Single LLM Agent (no verification loop)
+# Dataset: UNSW-NB15
+
+experiment:
+  id: E1
+  name: Baseline-Single
+  description: "Single Agent-Alpha (LLM) without verification loop"
+  dataset: unsw_nb15
+
+data:
+  base_dir: project/data/processed/unsw_nb15/zeroday_split
+  train: train_known.csv
+  val_known: val_known.csv
+  val_zeroday: val_zeroday.csv
+  text_col: text
+  label_col: label_name  # "Normal", "Exploits", "DoS", etc.
+  zeroday_classes: ["Shellcode", "Worms"]
+
+agent_alpha:
+  model: llama3.2:latest  # 3B; intended llama3:8b not available locally
+  ollama_url: http://localhost:11434
+  temperature: 0.1
+  max_tokens: 512
+  timeout: 120.0
+  max_workers: 2  # conservative for local inference
+
+# E1 has no Beta agent and no consensus — Alpha verdict is final
+consensus:
+  mode: passthrough_alpha  # special mode: Alpha verdict → final verdict directly
+
+sampling:
+  pilot_n: 100          # small sample for pipeline validation
+  subsample_n: 5000     # if full run too slow (>2h), use this
+  full: true            # set false to use subsample_n
+  seed: 42
+
+output:
+  results_dir: project/results/tables
+  logs_dir: project/logs
+  prefix: E1_unsw

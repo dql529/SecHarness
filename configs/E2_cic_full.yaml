@@ -1,0 +1,49 @@
+# E2: Baseline-Hybrid — ML Classifier only
+# Dataset: CIC-IDS2017 Full
+
+experiment:
+  id: E2
+  name: Baseline-Hybrid
+  description: "ML Classifier (RandomForest) on CIC-IDS2017 Full"
+  dataset: cic_ids2017_full
+
+data:
+  base_dir: project/data/processed/cic_ids2017_full/zeroday_split
+  train: train_known.csv
+  val_known: val_known.csv
+  val_zeroday: val_zeroday.csv
+  text_col: text
+  label_col: mc_label_name
+  zeroday_classes: ["Bot", "WebAttack", "Infiltration"]
+
+agent_alpha:
+  model: llama3.2:latest
+  ollama_url: http://localhost:11434
+  temperature: 0.1
+  max_tokens: 512
+  timeout: 120.0
+  max_workers: 2
+
+agent_beta_ml:
+  classifier_type: random_forest
+  n_estimators: 200
+  max_depth: 12
+  random_state: 42
+  model_save_path: project/logs/E2_beta_ml_cic_full_model.pkl
+
+fusion:
+  mode: weighted_average
+  alpha_weight: 0.5
+  beta_weight: 0.5
+  attack_threshold: 0.5
+
+sampling:
+  pilot_n: 100
+  subsample_n: 5000
+  full: true
+  seed: 42
+
+output:
+  results_dir: project/results/tables
+  logs_dir: project/logs
+  prefix: E2_cic_full

@@ -1,0 +1,38 @@
+# NOTE (audit 2026-07-28 / recorded 2026-08-19): NEVER RUN as a reported condition.
+# HF-Transformers twin never run; the reported 8B E1-RF condition is E1_rf_context_8B_ollama_unsw.yaml. Kept for provenance.
+# E1-RF-8B: Llama-3.1-8B + No Harness + RF Context in Prompt
+# Same family as 3B (Llama), controls architecture confound
+experiment:
+  id: "E1_rf_context_8B_unsw"
+  name: "Zero-shot 8B Llama, No Harness, RF Context"
+
+model:
+  base: "unsloth/Meta-Llama-3.1-8B-Instruct"
+  adapter: null
+  load_in_4bit: false
+  max_new_tokens: 256
+  temperature: 0.1
+
+harness:
+  enabled: false
+  rf_context: true
+  tools:
+    check_anomaly: true
+    lookup_signature: true
+    query_history: true
+    load_knowledge: true
+  permissions:
+    enabled: true
+    confidence_threshold: 0.3
+  max_steps: 5
+
+data:
+  dataset: "unsw"
+  split: "val"
+  subsample: null
+  seed: 42
+  ml_model_path: "project/logs/E2_beta_ml_model.pkl"
+
+output:
+  log_dir: "project/logs/v2/"
+  results_dir: "project/results/tables/v2/"

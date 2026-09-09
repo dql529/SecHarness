@@ -1,0 +1,33 @@
+experiment:
+  id: "tau_13B_noTools_unsw"
+  name: "Tau Ablation 13B: noTools"
+
+model:
+  base: "api://localhost:8000/Qwen/Qwen2.5-14B-Instruct-AWQ"
+  adapter: null
+  load_in_4bit: false
+  max_new_tokens: 256
+  temperature: 0.1
+
+harness:
+  enabled: true
+  tools:
+    check_anomaly: false
+    lookup_signature: false
+    query_history: false
+    load_knowledge: false
+  permissions:
+    enabled: true
+    confidence_threshold: 0.3
+  max_steps: 5
+
+data:
+  dataset: "unsw"
+  split: "val"
+  subsample: 200
+  ml_model_path: "project/logs/E2_beta_ml_model.pkl"
+
+output:
+  log_dir: "project/logs/v2_tdsc/"
+  results_dir: "project/results/tables/v2_tdsc/"
+  prefix: "tau_13B_noTools_unsw"
