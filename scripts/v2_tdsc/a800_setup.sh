@@ -22,8 +22,8 @@ export HF_HOME="${AUTODL_TMP}/huggingface"
 # huggingface.co not reachable from AutoDL (China region); use mirror
 export HF_ENDPOINT=https://hf-mirror.com
 
-PAPER5_DIR="${AUTODL_TMP}/SecHarness"
-ADAPTER_DIR="${PAPER5_DIR}/project/models/qlora_unsw_v2_clean/adapter"
+PROJECT_DIR="${AUTODL_TMP}/SecHarness"
+ADAPTER_DIR="${PROJECT_DIR}/project/models/qlora_unsw_v2_clean/adapter"
 BASE_MODEL="unsloth/Llama-3.2-3B-Instruct"
 BASE_MODEL_LOCAL="${HF_HOME}/hub/models--unsloth--Llama-3.2-3B-Instruct"
 VLLM_LOG="${AUTODL_TMP}/vllm_alpha.log"
@@ -39,8 +39,8 @@ log() {
 # ---------------------------------------------------------------------------
 log "step 0: checking rsync prerequisites"
 
-if ! test -d "${PAPER5_DIR}/project/src"; then
-    echo "ERROR: rsync_to_a800.sh not run yet — ${PAPER5_DIR}/project/src not found" >&2
+if ! test -d "${PROJECT_DIR}/project/src"; then
+    echo "ERROR: rsync_to_a800.sh not run yet — ${PROJECT_DIR}/project/src not found" >&2
     exit 1
 fi
 

@@ -118,7 +118,7 @@ BIN_LABELS = ["low", "medium", "high", "very_high"]
 
 
 # ---------------------------------------------------------------------------
-# Utility functions (adapted from uav_paper_3)
+# Utility functions
 # ---------------------------------------------------------------------------
 def norm_str(x, *, default: str = "UNK") -> str:
     if x is None or (isinstance(x, float) and np.isnan(x)):

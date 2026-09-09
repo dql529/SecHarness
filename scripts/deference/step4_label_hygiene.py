@@ -280,7 +280,7 @@ def read_model_base(config_path: Path) -> str | None | object:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--project", default=str(Path.home() / "Paper_project/SecHarness/project"))
+    ap.add_argument("--project", default=str(Path(__file__).resolve().parents[2]))
     args = ap.parse_args()
     project = Path(args.project)
 

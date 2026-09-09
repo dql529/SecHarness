@@ -112,7 +112,7 @@ def classify(name: str) -> tuple:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--logs", default=str(Path.home() / "Paper_project/SecHarness/project/logs"))
+    ap.add_argument("--logs", default=str(Path(__file__).resolve().parents[2] / "logs"))
     ap.add_argument("--csv", default=None)
     args = ap.parse_args()
 

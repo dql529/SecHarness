@@ -18,7 +18,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import pearsonr, spearmanr
 
-TAB = Path.home() / "Paper_project/SecHarness/project/results/tables/candidate_b"
+TAB = Path(__file__).resolve().parents[2] / "results/tables/candidate_b"
 N_BOOT = 10_000
 SEED = 42
 FAMILIES = {"zd_logreg": "Logistic reg. (linear)",

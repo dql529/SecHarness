@@ -581,9 +581,9 @@ def print_task_c(agg: dict[tuple[str, str], dict], n_ceils: dict[str, int]) -> N
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--logs", default=str(Path.home() / "Paper_project/SecHarness/project/logs"))
+    ap.add_argument("--logs", default=str(Path(__file__).resolve().parents[2] / "logs"))
     ap.add_argument("--configs",
-                     default=str(Path.home() / "Paper_project/SecHarness/project/configs"))
+                     default=str(Path(__file__).resolve().parents[2] / "configs"))
     args = ap.parse_args()
 
     agg = print_task_a(Path(args.logs), Path(args.configs))
