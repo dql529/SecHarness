@@ -8,7 +8,7 @@ Condition That Carries It to the Agent* (Expert Systems, under review). Director
 and hard-coded local paths in a few run scripts.
 
 The evidence the manuscript's tables are computed from — the per-sample audit logs, the results
-tables and the seed-replication provenance sidecars and SHA-256 manifests (2.2 GB uncompressed) —
+tables and the seed-replication provenance sidecars and SHA-256 manifests (1.2 GB uncompressed) —
 is not in this repository: it accompanies the manuscript as the supplementary archive
 `SecHarness_supplementary.zip`, whose layout this repository mirrors, and is released with the
 paper. `MANIFEST.md` inventories that archive (every per-sample log with its record count and
@@ -44,9 +44,9 @@ expect an OpenAI-compatible server (vLLM or Ollama) at that address.
 
 ## Large artifacts (not in this repository)
 
-The per-sample audit logs (129 files, 1.1 GB), the results tables (0.96 GB) and the
+The per-sample audit logs (129 files, 1.2 GB), the results tables (1 MB) and the
 seed-replication provenance sidecars accompany the manuscript as the supplementary archive
-`SecHarness_supplementary.zip` (230 MB compressed) and will be deposited with a DOI on
+`SecHarness_supplementary.zip` (45 MB compressed) and will be deposited with a DOI on
 publication; `MANIFEST.md` lists every archived log with its record count and SHA-256 prefix, so
 an unzipped copy can be checked file by file. The analysis scripts in step 4 read those logs;
 nothing else in the repository depends on them.
