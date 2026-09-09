@@ -22,7 +22,7 @@ export HF_HOME="${AUTODL_TMP}/huggingface"
 # huggingface.co not reachable from AutoDL (China region); use mirror
 export HF_ENDPOINT=https://hf-mirror.com
 
-PAPER5_DIR="${AUTODL_TMP}/paper5_tdsc"
+PAPER5_DIR="${AUTODL_TMP}/SecHarness"
 ADAPTER_DIR="${PAPER5_DIR}/project/models/qlora_unsw_v2_clean/adapter"
 BASE_MODEL="unsloth/Llama-3.2-3B-Instruct"
 BASE_MODEL_LOCAL="${HF_HOME}/hub/models--unsloth--Llama-3.2-3B-Instruct"

@@ -40,8 +40,8 @@ if platform.system() == "Darwin":
     ROOT = Path(__file__).resolve().parent.parent
     sys.path.insert(0, str(ROOT.parent))
 else:
-    ROOT = Path("C:/paper5/project")
-    sys.path.insert(0, str(Path("C:/paper5")))
+    ROOT = Path(__file__).resolve().parents[1]  # repository root
+    sys.path.insert(0, str(ROOT.parent))
 
 VAL_KNOWN = ROOT / "data/processed/unsw_nb15/zeroday_split/val_known.csv"
 VAL_ZD = ROOT / "data/processed/unsw_nb15/zeroday_split/val_zeroday.csv"

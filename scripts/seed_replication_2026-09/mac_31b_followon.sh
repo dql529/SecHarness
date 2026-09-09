@@ -3,7 +3,7 @@
 # seeds with the identical command (Ollama gemma4:31b, UNSW sub200), then write a sha manifest.
 # Usage: bash mac_31b_followon.sh <PID_of_seed42_run> <TAG> ["seeds"]
 set -uo pipefail
-cd "$HOME/Paper_project/SecHarness"
+cd "${SECHARNESS_ROOT:?set SECHARNESS_ROOT to the repository root}"
 PID="${1:?pid}"; TAG="${2:?tag}"; SEEDS="${3:-123 456}"; L=project/logs/seed_replication_2026-09
 log(){ echo "[$(date -Iseconds)] $*"; }
 while kill -0 "$PID" 2>/dev/null; do sleep 60; done

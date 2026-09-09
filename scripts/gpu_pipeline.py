@@ -30,11 +30,11 @@ log = logging.getLogger("gpu_pipeline")
 # ──────────────────────────────────────────────────────────────────────────────
 # Paths (Windows-style, absolute)
 # ──────────────────────────────────────────────────────────────────────────────
-ROOT = Path("C:/paper5/project")
+ROOT = Path(__file__).resolve().parents[1]  # repository root
 PYTHON = r"E:/miniconda3/envs/llm_torch_backup/python.exe"
 
-# Make 'project' importable from ROOT.parent = C:/paper5
-sys.path.insert(0, str(Path("C:/paper5")))
+# Make the repository package importable from ROOT.parent
+sys.path.insert(0, str(ROOT.parent))
 
 TRAIN_CSV = ROOT / "data/processed/unsw_nb15/zeroday_split/train_known.csv"
 VAL_KNOWN_CSV = ROOT / "data/processed/unsw_nb15/zeroday_split/val_known.csv"

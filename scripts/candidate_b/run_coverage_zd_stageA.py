@@ -39,7 +39,7 @@ import pandas as pd
 from scipy.stats import pearsonr, spearmanr
 from sklearn.covariance import LedoitWolf
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]  # paper5/project/
+PROJECT_ROOT = Path(__file__).resolve().parents[2]  # repository root
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.agents.beta_agent_ml import BetaAgentML  # noqa: E402

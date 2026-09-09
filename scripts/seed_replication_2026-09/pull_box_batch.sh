@@ -5,7 +5,7 @@
 #   e.g. bash pull_box_batch.sh 20260909T1932 SHA256SUMS_20260909T1932 v2_tdsc v2_tdsc \
 #          "tau_13B_noPermissions_unsw_sub200_seed*_20260909T1932_audit.jsonl=tau_13B_noPermissions_unsw_sub200_audit.jsonl"
 set -uo pipefail
-cd "$HOME/Paper_project/SecHarness"
+cd "${SECHARNESS_ROOT:?set SECHARNESS_ROOT to the repository root}"
 TAG="${1:?TAG}"; MAN="${2:?manifest}"; LSUB="${3:?logsub}"; RSUB="${4:?ressub}"; shift 4
 BOX="${BOX_HOST:?set BOX_HOST=user@host of the GPU box}"; SSH="ssh -p ${BOX_PORT:-22} -o StrictHostKeyChecking=no"; BR="${BOX_REPO:-/root/autodl-tmp/SecHarness}"
 L=project/logs/seed_replication_2026-09; mkdir -p "$L/box_logs"

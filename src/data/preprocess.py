@@ -7,7 +7,7 @@ Handles both UNSW-NB15 and CIC-IDS2017 datasets:
   3. Leave-K-Attack-Out zero-day splits
   4. Export train / val / zero-day CSVs + summary stats
 
-Reuses serialisation logic from uav_paper_3 (quantile binning → kv text).
+Serialisation: quantile binning → kv text.
 """
 
 from __future__ import annotations
@@ -26,7 +26,7 @@ from sklearn.model_selection import train_test_split
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-PROJECT_ROOT = Path(__file__).resolve().parents[2]  # paper5/project/
+PROJECT_ROOT = Path(__file__).resolve().parents[2]  # repository root
 DATA_RAW = PROJECT_ROOT / "data" / "raw"
 DATA_PROCESSED = PROJECT_ROOT / "data" / "processed"
 RESULTS_TABLES = PROJECT_ROOT / "results" / "tables"
